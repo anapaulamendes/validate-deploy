@@ -9,6 +9,8 @@ SECRET_KEY = config("SECRET_KEY", default="changeme")
 
 DEBUG = config("DEBUG", default=True, cast=bool)
 
+ENV = config("ENV", default="local")
+
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
@@ -60,7 +62,7 @@ DB_PASSWORD = config("DB_PASSWORD")
 DB_HOST = config("DB_HOST")
 DB_PORT = config("DB_PORT")
 
-if 'test' in sys.argv:
+if 'test' in sys.argv or ENV == "local":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
