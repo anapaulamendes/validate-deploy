@@ -21,3 +21,12 @@ test:
 
 runserver:
 	python manage.py runserver 0.0.0.0:8000
+
+coverage:
+	coverage run --source='.' manage.py test
+
+html_coverage: coverage
+	coverage html
+
+report_coverage: coverage
+	coverage report
