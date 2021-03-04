@@ -56,11 +56,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "settings.wsgi.application"
 
-DB_NAME = config("DB_NAME")
-DB_USER = config("DB_USER")
-DB_PASSWORD = config("DB_PASSWORD")
-DB_HOST = config("DB_HOST")
-DB_PORT = config("DB_PORT")
+DB_NAME = config("DB_NAME", default="teste")
+DB_USER = config("DB_USER", default="teste")
+DB_PASSWORD = config("DB_PASSWORD", default="teste")
+DB_HOST = config("DB_HOST", default="localhost")
+DB_PORT = config("DB_PORT", default="5432")
 
 if "test" in sys.argv or ENV == "local":
     DATABASES = {
