@@ -16,18 +16,6 @@ jobs:
           - 3.6
           - 3.7
           - 3.8
-    services:
-      postgres:
-        image: 'postgres:latest'
-        env:
-          POSTGRES_USER: '${{ secrets.DB_USER }}'
-          POSTGRES_PASSWORD: '${{ secrets.DB_PASSWORD }}'
-          POSTGRES_DB: '${{ secrets.DB_NAME }}'
-        options: >-
-          --health-cmd pg_isready --health-interval 10s --health-timeout 5s
-          --health-retries 5
-        ports:
-          - '5432:5432'
     steps:
       - uses: actions/checkout@v2
       - name: 'Set up Python ${{ matrix.python-version }}'
@@ -41,7 +29,3 @@ jobs:
       - name: Run Tests
         run: |
           python manage.py test
-        env: >-
-          SECRET_KEY=${{ secrets.SECRET_KEY }} DEBUG=${{ secrets.DEBUG }}
-          ENV=${{ secrets.ENV }} DB_HOST=${{ secrets.DB_HOST }} DB_PORT=${{
-          secrets.DB_PORT }}
