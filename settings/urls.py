@@ -1,6 +1,8 @@
-from django.contrib import admin
-from django.urls import path
+from rest_framework import routers
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-]
+from core.views import ApprovalsViewSet, ReleaseViewSet
+
+router = routers.SimpleRouter()
+router.register(r"release", ReleaseViewSet, basename="release")
+router.register(r"approval", ApprovalsViewSet, basename="approval")
+urlpatterns = router.urls

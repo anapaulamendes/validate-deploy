@@ -107,3 +107,10 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
+
+
+# external_urls
+APPROVERS_API_URL = config("APPROVERS_API_URL", default="changeme")
+
+# external_keys
+SENDGRID_API_KEY = config("SENDGRID_API_KEY", default="changeme")
