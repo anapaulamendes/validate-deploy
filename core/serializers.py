@@ -1,12 +1,17 @@
 from rest_framework import filters, serializers
 
 from core.models import Approvals, Release
+from core.services.validate_deploy import ValidateDeploy
 
 
 class ReleaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Release
         fields = "__all__"
+
+    def create(self, validated_data):
+        service = ValidateDeploy(validated_data)
+        return service.validate()
 
 
 class ApprovalsSerializer(serializers.ModelSerializer):
