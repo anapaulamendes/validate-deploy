@@ -8,9 +8,6 @@ class ReleaseSerializer(serializers.ModelSerializer):
         model = Release
         fields = "__all__"
 
-    def create(self, validated_data):
-        pass
-
 
 class ApprovalsSerializer(serializers.ModelSerializer):
     class Meta:
